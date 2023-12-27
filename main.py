@@ -6,7 +6,7 @@ def scrape_git_commits():
 
     for commit in Repo(os.getcwd()).iter_commits():
         c_message = commit.message
-        if commit.message not in leetcode_commits and c_message.startswith("Leetcode"):
+        if commit.message not in leetcode_commits or c_message.startswith("Leetcode"):
             leetcode_commits[commit.message] = commit.hexsha
 
     return leetcode_commits
